@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = "Sobre Mi";
 
 const identily = {
@@ -9,12 +11,30 @@ const identily = {
 };
 
 const skills = ["HTML", "CSS", "Javascript", "React", "Astro", "Redacción de documentos"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
+    <style define:vars={{skillColor}}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+        .skill {
+            color: var(--skillColor);
+            font-weight: bold;
+        }
+    </style>
   </head>
   <body>
     <a href="/">Inicio</a>
@@ -34,7 +54,12 @@ const skills = ["HTML", "CSS", "Javascript", "React", "Astro", "Redacción de do
     </ul>
     <p>Mis habilidades son:</p>
     <ul>
-        {skills.map((skill) => <li>{skill}</li>)}
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+        {happy && <p>¡Estoy feliz de aprender Astro!</p>}
+
+        {finished && <p>¡He terminado este Tutorial!</p>}
+
+        {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días</p>}
     </ul>
   </body>
 </html>
